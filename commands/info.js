@@ -1,14 +1,14 @@
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
-  name: 'about',
+  name: 'info',
   description: 'Give information on the bot.',
-  execute(message, client) {
+  async execute(message, args, client) {
     const embed = new MessageEmbed()
     .setColor('#417DC1')
-    .setTitle("Chroot info")
+    .setTitle("Chroot")
     .setThumbnail(client.user.displayAvatarURL())
-    .setDescription("This is a test embed for the info command")
+    .setDescription("Chroot is a coding bot with many features!")
     .addFields(
       { name: 'Version', value: '0.0.0', inline: true },
       { name: 'Library', value: 'N/A', inline: true },

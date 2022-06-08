@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
   name: 'stats',
   description: 'Give statistics on the bot.',
-  execute(message, client) {
+  execute(message, args, client) {
     const embed = new MessageEmbed()
     .setColor('#417DC1')
     .setDescription("This is a test embed for the stat command")
