@@ -28,7 +28,7 @@ client.on('ready', () => {
 		client.user.setPresence({activities: [{name: 'Fortnite | $help', type: 'PLAYING'}], status: 'online' });
   });
 
-  client.on('message', (message) => {
+  client.on('messageCreate', (message) => {
     if(!message.content.startsWith(prefix) || message.author.bot) return;
 
     const args = message.content.slice(prefix.length).split(/ +/);
@@ -37,7 +37,7 @@ client.on('ready', () => {
 		if(!client.commands.has(command)) return; 
 
 		try {
-			client.commands.get(command).execute(message, args);
+			client.commands.get(command).execute(message, args, client);
 		} catch(error) {
 			console.error(error);
 		}
