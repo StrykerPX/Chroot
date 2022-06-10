@@ -25,7 +25,7 @@ const prefix = process.env.PREFIX;
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
-		client.user.setPresence({activities: [{name: 'Fortnite | $help', type: 'PLAYING'}], status: 'online' });
+		client.user.setPresence({activities: [{name: `Fortnite | ${prefix}help`, type: 'PLAYING'}], status: 'online' });
   });
 
   client.on('messageCreate', (message) => {
@@ -38,8 +38,8 @@ client.on('ready', () => {
 
 		try {
 			client.commands.get(command).execute(message, args, client);
-		} catch(error) {
-			console.error(error);
+		} catch(e) {
+			console.error(e);
 		}
   });
 

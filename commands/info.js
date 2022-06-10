@@ -4,6 +4,13 @@ module.exports = {
   name: 'info',
   description: 'Give information on the bot.',
   async execute(message, args, client) {
+
+    let totalUsers = 0;
+
+    for (const guild of client.guilds.cache) {
+      totalUsers += (await guild[1].members.fetch()).filter(member => !member.user.bot).size;
+    }
+
     const embed = new MessageEmbed()
     .setColor('#417DC1')
     .setTitle("Chroot")
@@ -15,8 +22,8 @@ module.exports = {
       { name: 'Creator', value: 'StrykerPX', inline: true }
     )
     .addFields(
-      { name: 'Servers', value: '0', inline: true },
-      { name: 'Users', value: '0', inline: true },
+      { name: 'Servers', value: client.guilds.cache.size.toString(), inline: true },
+      { name: 'Users', value: totalUsers.toString(), inline: true },
       { name: 'website', value: 'N/A', inline: true }
     )
     message.channel.send({embeds: [embed]});
